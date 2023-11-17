@@ -10,5 +10,6 @@ CREATE TABLE IF NOT EXISTS Libros (
     nombre VARCHAR(50) NOT NULL,
     autor VARCHAR(50) NOT NULL,
     fecha DATE NOT NULL,
-    estudiante_id INT REFERENCES Estudiante(id)
+    estudiante_id INT,
+    FOREIGN KEY REFERENCES Estudiante(id)
     );

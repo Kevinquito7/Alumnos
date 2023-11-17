@@ -12,24 +12,26 @@ import org.springframework.web.server.ResponseStatusException
 @Service
 class LibrosService {
     @Autowired
-    lateinit var LibrosRepository: LibrosRepository
-    @Autowired
     lateinit var EstudianteRepository: EstudianteRepository
+    @Autowired
+    lateinit var LibrosRepository: LibrosRepository
 
     fun list(): List<Libros> {
         return LibrosRepository.findAll()
     }
 
-    fun save(libro: Libros): Libros {
-        try {
-            libro.nombre?.takeIf { it.trim().isNotEmpty() }
-                ?: throw Exception("Nombres no deben ser vacíos")
-            libro.autor?.takeIf { it.trim().isNotEmpty() }
-                ?: throw Exception("Autores no deben ser vacíos")
-        } catch (ex: Exception) {
-            throw ResponseStatusException(
-                HttpStatus.NOT_FOUND, ex.message, ex
-            )
+
+    fun save(libros: Libros): Libros{
+        try{
+
+            libros.nombre?.takeIf { it.trim().isNotEmpty() }
+                ?: throw Exception("Nombres no debe ser vacio")
+            libros.autor?.takeIf { it.trim().isNotEmpty() }
+                ?: throw Exception("Nombres no debe ser vacio")
+            return LibrosRepository.save(libros)
+        }
+        catch (ex:Exception){
+            throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
         }
     }
 

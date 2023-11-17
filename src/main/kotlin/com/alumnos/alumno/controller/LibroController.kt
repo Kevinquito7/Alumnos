@@ -1,6 +1,5 @@
 package com.alumnos.alumno.controller
 
-import com.alumnos.alumno.model.Estudiante
 import com.alumnos.alumno.model.Libros
 import com.alumnos.alumno.service.LibrosService
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/libros")   //endpoint
-class LibrosController {
+class LibroController {
     @Autowired
     lateinit var librosService: LibrosService
 
